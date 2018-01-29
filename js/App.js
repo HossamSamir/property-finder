@@ -28,6 +28,8 @@ import StacksOverTabs from './StacksOverTabs';
 import SimpleStack from './SimpleStack';
 import SimpleTabs from './SimpleTabs';
 import TabAnimations from './TabAnimations';
+import InitialSettings from './InitialSettings';
+import RootNavigation from './navigation/RootNavigation';
 
 const ExampleRoutes = {
   // SimpleStack: {
@@ -44,6 +46,11 @@ const ExampleRoutes = {
     name: 'Drawer Example',
     description: 'Android-style drawer navigation',
     screen: Drawer,
+  },
+  InitialSettings: {
+    name: 'InitialSettings screen',
+    description: 'choosing language and location',
+    screen: InitialSettings,
   },
   // MultipleDrawer: {
   //   name: 'Multiple Drawer Example',
@@ -110,9 +117,9 @@ class MainScreen extends React.Component<*> {
     const { navigation } = this.props;
 
     return (
-      <View style={{ flex: 1 }}>
-        <Drawer /> 
-      </View>
+      // <View style={{ flex: 1 }}>
+        <RootNavigation />
+      // </View>
     );
   }
 }

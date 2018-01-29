@@ -37,6 +37,7 @@ const InboxScreen = ({ navigation }) => (
   </View>
 );
 InboxScreen.navigationOptions = {
+  header: null,
   drawerLabel: 'تجربه',
   drawerIcon: ({ tintColor }) => (
     <MaterialIcons
@@ -114,6 +115,7 @@ const DraftsScreen = ({ navigation }) => (
   </View>
 );
 DraftsScreen.navigationOptions = {
+  header: null,
   drawerLabel: 'الرئيسية',
   drawerIcon: ({ tintColor }) => (
     <MaterialIcons name="drafts" size={24} style={{ color: tintColor }} />
@@ -137,7 +139,7 @@ const DrawerExample = DrawerNavigator(
     drawerToggleRoute: 'DrawerToggle',
     initialRouteName: 'Drafts',
     contentOptions: {
-      activeTintColor: '#e91e63',
+      activeTintColor: '#0277BD',
     },
     drawerPosition: 'right',
   }
