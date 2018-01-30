@@ -38,36 +38,36 @@ export default class InitialSettings extends React.Component {
     return (
       <View style={{ flex: 1, backgroundColor: 'white'}}>
 
-        <View style={{ flex: .6 , alignItems: 'center', justifyContent: 'center'}}>
+        <View style={{ flex: .4 , alignItems: 'center', justifyContent: 'center'}}>
           <Image source={{ uri: 'http://guardianroofing.org/wp-content/uploads/2016/06/HouseLogo.png' }} style={{ width: '50%', height: '50%' }} />
         </View>
 
         <View style={{ flex: .2, flexDirection: 'row', backgroundColor: 'transparent', alignItems: 'center', marginHorizontal: 30}}>
         <SelectInput
-            buttonsBackgroundColor='grey'
-            style={{ backgroundColor: '#009EE0', borderRadius: 10, flex: 1, height: 50}}
+            buttonsBackgroundColor='#0277BD'
+            style={{ backgroundColor: '#009EE0', borderRadius: 10, flex: 1, }}
             labelStyle={{ color: 'white', }}
-            buttonsTextColor='red'
+            buttonsTextColor='white'
             cancelKeyText='الغاء'
             submitKeyText='اختيار'
             value={this.state.location}
             options={this.state.locations}
-            onSubmitEditing={(itemValue) => this.setState({region: itemValue})}>
+            onSubmitEditing={(itemValue) => this.setState({location: itemValue})}>
         </SelectInput>
         <EvilIcons name='location' color='#0277BD' size={40} style={{ flex: .2 }} />
         </View>
 
         <View style={{ flex: .2, flexDirection: 'row', backgroundColor: 'transparent', alignItems: 'center', marginHorizontal: 30}}>
         <SelectInput
-            buttonsBackgroundColor='grey'
-            style={{ backgroundColor: '#009EE0', borderRadius: 10, flex: 1, height: 50}}
+            buttonsBackgroundColor='#0277BD'
+            style={{ backgroundColor: '#009EE0', borderRadius: 10, flex: 1,  }}
             labelStyle={{ color: 'white', }}
-            buttonsTextColor='red'
+            buttonsTextColor='white'
             cancelKeyText='الغاء'
             submitKeyText='اختيار'
             value={this.state.language}
             options={this.state.languages}
-            onSubmitEditing={(itemValue) => this.setState({region: itemValue})}>
+            onSubmitEditing={(itemValue) => this.setState({language: itemValue})}>
         </SelectInput>
         <EvilIcons name='gear' color='#0277BD' size={40} style={{ flex: .2 }} />
         </View>
