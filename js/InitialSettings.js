@@ -81,11 +81,11 @@ export default class InitialSettings extends React.Component {
           <Text style={{ marginVertical: 20 }}>أو</Text>
 
           <View style={{ flexDirection: 'row' }}>
-            <TouchableOpacity style={{ backgroundColor: 'white', flex: 1 }}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Login')} style={{ backgroundColor: 'white', flex: 1 }}>
               <Text style={{ color: '#0277BD', fontWeight: 'bold', fontSize: 15, textAlign: 'left' }}>تسجيل دخول</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={{ backgroundColor: 'white', flex: 1 }}>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate('Signup')} style={{ backgroundColor: 'white', flex: 1 }}>
               <Text style={{ color: '#0277BD', fontWeight: 'bold', fontSize: 15, textAlign: 'right' }}>فتح حساب جديد</Text>
             </TouchableOpacity>
 

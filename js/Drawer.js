@@ -3,32 +3,71 @@
  */
 
 import React from 'react';
-import { Button, Platform, ScrollView, StatusBar, View, Text, TextInput, ListView, Image } from 'react-native';
+import { Button, Platform, ScrollView, TouchableOpacity, StatusBar, View, Text, TextInput, ListView, Image } from 'react-native';
 import { DrawerNavigator, SafeAreaView } from 'react-navigation';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import { EvilIcons } from '@expo/vector-icons';
+import Modal from "react-native-modal";
 
-const MyNavScreen = ({ navigation, banner }) => (
-  <ScrollView>
-    <SafeAreaView forceInset={{ top: 'always' }}>
-    <View style={{ backgroundColor: '#0277BD', flex: 1, alignItems: 'center', justifyContent: 'center', height: 60, flexDirection: 'row', elevation: 20,}}>
-      <View style={{ flex: 1, alignItems: 'center'}}>
-        <EvilIcons name="search" color="white" size={30} />
-      </View>
-      <View style={{ flex: 1, alignItems: 'center'}}>
-        <EvilIcons name="archive" color="white" size={30} />
-      </View>
-      <View style={{ flex: 3,}}>
-        <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 18 }}>{banner}</Text>
-      </View>
-      <View style={{ flex: 1, alignItems: 'center'}}>
-        <EvilIcons onPress={() => navigation.navigate('DrawerOpen')} name="navicon" color="white" size={30} />
-      </View>
-    </View>
-    </SafeAreaView>
-    <StatusBar barStyle="default" />
-  </ScrollView>
-);
+// const MyNavScreen = ({ navigation, banner }) => (
+// );
+
+class MyNavScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalVisible: false
+    }
+  }
+  render() {
+    return (
+      <ScrollView>
+        <Modal isVisible={this.state.modalVisible}>
+          <ScrollView style={{ backgroundColor: 'white', padding: 20, borderRadius: 10, width: '100%', height: '40%', marginTop: '50%' }}>
+            <Text>ترتيب حسب</Text>
+            <TouchableOpacity  style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', margin: 20 }}>
+              <Text style={{textAlign: 'right'}}>السعر الأقل</Text>
+              <EvilIcons name='user' color='#0277BD' size={40} />
+            </TouchableOpacity>
+            <TouchableOpacity  style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', margin: 20 }}>
+              <Text style={{textAlign: 'right'}}>السعر الأعلي</Text>
+              <EvilIcons name='user' color='#0277BD' size={40} />
+            </TouchableOpacity>
+            <TouchableOpacity  style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end', margin: 20 }}>
+              <Text style={{textAlign: 'right'}}>تجربه ....</Text>
+              <EvilIcons name='user' color='#0277BD' size={40} />
+            </TouchableOpacity>
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <TouchableOpacity onPress={() => this.setState({ modalVisible: false })} style={{ backgroundColor: '#0277BD', padding: 10, borderRadius: 7, alignItems: 'center', margin: 20 }}>
+                <Text style={{textAlign: 'right', color: 'white', fontWeight: 'bold'}}>إعادة ترتيب</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => this.setState({ modalVisible: false })} style={{  alignItems: 'center', margin: 20 }}>
+                <Text style={{textAlign: 'right'}}>إلغاء</Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
+        </Modal>
+        <SafeAreaView forceInset={{ top: 'always' }}>
+        <View style={{ backgroundColor: '#0277BD', flex: 1, alignItems: 'center', justifyContent: 'center', height: 60, flexDirection: 'row', elevation: 20,}}>
+          <View style={{ flex: 1, alignItems: 'center'}}>
+            <EvilIcons name="search" color="white" size={30} />
+          </View>
+          <View style={{ flex: 1, alignItems: 'center'}}>
+            <EvilIcons onPress={() => this.setState({ modalVisible: true })} name="archive" color="white" size={30} />
+          </View>
+          <View style={{ flex: 3,}}>
+            <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 18 }}>{this.props.banner}</Text>
+          </View>
+          <View style={{ flex: 1, alignItems: 'center'}}>
+            <EvilIcons onPress={() => this.props.navigation.navigate('DrawerOpen')} name="navicon" color="white" size={30} />
+          </View>
+        </View>
+        </SafeAreaView>
+        <StatusBar barStyle="default" />
+      </ScrollView>
+    )
+  }
+}
 
 const InboxScreen = ({ navigation }) => (
   <View>

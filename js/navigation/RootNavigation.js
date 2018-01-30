@@ -3,18 +3,22 @@ import { StackNavigator } from 'react-navigation';
 import InitialSettings from '../InitialSettings';
 import Drawer from '../Drawer';
 import Login from '../Login';
+import Signup from '../Signup';
 
 const RootStackNavigator = StackNavigator(
   {
+    Drawer: {
+      screen: Drawer,
+    },
+    InitialSettings: {
+      screen: InitialSettings,
+    },
+    Signup: {
+      screen: Signup,
+    },
     Login: {
       screen: Login,
     },
-      InitialSettings: {
-          screen: InitialSettings,
-      },
-      Drawer: {
-          screen: Drawer,
-      },
   },
 );
 
