@@ -50,7 +50,7 @@ class MyNavScreen extends React.Component {
         <SafeAreaView forceInset={{ top: 'always' }}>
         <View style={{ backgroundColor: '#0277BD', flex: 1, alignItems: 'center', justifyContent: 'center', height: 60, flexDirection: 'row', elevation: 20,}}>
           <View style={{ flex: 1, alignItems: 'center'}}>
-            <EvilIcons name="search" color="white" size={30} />
+            <EvilIcons onPress={() => this.props.navigation.navigate('Search')} name="search" color="white" size={30} />
           </View>
           <View style={{ flex: 1, alignItems: 'center'}}>
             <EvilIcons onPress={() => this.setState({ modalVisible: true })} name="archive" color="white" size={30} />
@@ -71,13 +71,13 @@ class MyNavScreen extends React.Component {
 
 const InboxScreen = ({ navigation }) => (
   <View>
-    <MyNavScreen banner={'Inbox Screen'} navigation={navigation} />
+    <MyNavScreen banner={'اضافه عقار'} navigation={navigation} />
     <Text>askfhlaksfhlkashflaskhfl</Text>
   </View>
 );
 InboxScreen.navigationOptions = {
   header: null,
-  drawerLabel: 'تجربه',
+  drawerLabel: 'اضافه عقار',
   drawerIcon: ({ tintColor }) => (
     <MaterialIcons
       name="move-to-inbox"
@@ -142,6 +142,7 @@ const DraftsScreen = ({ navigation }) => (
       <ListView
           dataSource={state.dataSource}
           renderRow={(rowData) => (
+            <TouchableOpacity onPress={ () => navigation.navigate('productSwiper', {title: rowData.title}) }>
             <View style={{ paddingTop: 30, paddingHorizontal: 20 }}>
               <Image
                 style={{ width: '100%', height: 150, borderRadius: 10 }}
@@ -149,6 +150,7 @@ const DraftsScreen = ({ navigation }) => (
                <Text style={{ paddingVertical: 10, textAlign: 'right', fontWeight: 'bold', fontSize: 17}}>{rowData.title}</Text>
                <Text style={{ color: 'grey' }}>{rowData.loc}</Text>
             </View>
+          </TouchableOpacity>
           )}
         />
   </View>
@@ -163,13 +165,13 @@ DraftsScreen.navigationOptions = {
 
 const DrawerExample = DrawerNavigator(
   {
-    Inbox: {
-      path: '/',
-      screen: InboxScreen,
-    },
     Drafts: {
       path: '/sent',
       screen: DraftsScreen,
+    },
+    Inbox: {
+      path: '/',
+      screen: InboxScreen,
     },
   },
   {
